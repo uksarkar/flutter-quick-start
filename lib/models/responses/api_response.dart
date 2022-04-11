@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_quick_start/utils/log.dart';
-
+import '../../utils/log.dart';
 import '../../utils/constants.dart';
 
 class ApiResponse<T> {

@@ -1,18 +1,20 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/splash_screen.dart';
 import '../utils/str.dart';
 
 abstract class Routes {
   /// argument free routes
-  static const _Destination welcomeScreen = _Destination(
-    screen: Text("Comming soon"),
+  static const _Destination splashScreen = _Destination(
+    screen: SplashScreen(),
     path: "/",
   );
 
   /// all argument free destinations
   /// registerable list
   static final List<_Destination> _cleanDestinations = [
-    welcomeScreen,
+    splashScreen,
   ];
 
   /// all argument based destinations

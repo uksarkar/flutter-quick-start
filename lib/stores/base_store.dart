@@ -13,9 +13,12 @@ class BaseStore = _BaseStore with _$BaseStore;
 
 // The store-class
 abstract class _BaseStore with Store {
-  final DB _db;
+  /// make one database instance for entire application
+  DB? _db;
 
-  _BaseStore(DB db) : _db = db;
+  /// Should instantiate the database on application start
+  DB get db => _db!;
 
-  DB get db => _db;
+  // set the database
+  set db(DB db) => _db = db;
 }

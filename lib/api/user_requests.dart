@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quick_start/models/user.dart';
 import '../api/base_request.dart';
 import '../models/responses/api_response.dart';
 
@@ -13,4 +14,14 @@ class UserRequests extends BaseRequest {
           showMessage: showMessage,
           context: context,
         );
+
+  /// get all users
+  Future<ApiResponse<List<User>>> getAllUsers() {
+    return handle(url: "/users");
+  }
+
+  /// find user by id
+  Future<ApiResponse<User>> findUserById(int id) {
+    return handle(url: "/users/$id");
+  }
 }
