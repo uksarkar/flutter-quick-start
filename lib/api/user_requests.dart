@@ -21,7 +21,7 @@ class UserRequests extends BaseRequest {
   }
 
   /// find user by id
-  Future<ApiResponse<User>> findUserById(int id) {
+  Future<ApiResponse<User?>> findUserById(int id) {
     return handle(url: "/users/$id");
   }
 }
