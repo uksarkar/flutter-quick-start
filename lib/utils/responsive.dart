@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Responsive {
-  final BuildContext context;
   final MediaQueryData media;
 
   /// breakpoints
   final double _mobile = 600, _tablet = 840;
 
-  Responsive(this.context) : media = MediaQuery.of(context);
+  Responsive(BuildContext context) : media = MediaQuery.of(context);
 
   double get width => media.size.width;
 

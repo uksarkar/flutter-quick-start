@@ -32,20 +32,19 @@ class DB {
 
   // save record to database
   Future save(String record, dynamic data) async {
-    var store = StoreRef.main();
-    await store.record(record).put(instance, data);
-    return await store.record(record).get(instance);
+    StoreRef store = StoreRef.main();
+    return store.record(record).put(instance, data);
   }
 
   // get saved record
-  Future getRecord(String record) async {
+  Future getRecord(String record) {
     StoreRef store = StoreRef.main();
-    return await store.record(record).get(instance);
+    return store.record(record).get(instance);
   }
 
   // delete saved record
-  Future delete(String record) async {
+  Future delete(String record) {
     StoreRef store = StoreRef.main();
-    return await store.record(record).delete(instance);
+    return store.record(record).delete(instance);
   }
 }
