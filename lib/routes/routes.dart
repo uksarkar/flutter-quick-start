@@ -1,7 +1,13 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quick_start/screens/home_screen.dart';
 
+import '../screens/home_screen.dart';
+import '../screens/post_create_screen.dart';
+import '../screens/post_single_screen.dart';
+import '../screens/posts_list_screen.dart';
+import '../screens/user_create_screen.dart';
+import '../screens/user_single_screen.dart';
+import '../screens/users_list_screen.dart';
 import '../screens/splash_screen.dart';
 import '../utils/str.dart';
 
@@ -15,17 +21,54 @@ abstract class Routes {
     screen: HomeScreen(),
     path: "/home",
   );
+  static const _Destination postCreateScreen = _Destination(
+    screen: PostCreateScreen(),
+    path: "/posts/create",
+  );
+  static final _ArgumentDestination postSingleScreen = _ArgumentDestination(
+    handler: Handler(
+      handlerFunc: (context, parameters) {
+        return PostSingleScreen();
+      },
+    ),
+    path: "/posts/:id",
+  );
+  static const _Destination postListScreen = _Destination(
+    screen: PostsListScreen(),
+    path: "/posts",
+  );
+  static const _Destination userCreateScreen = _Destination(
+    screen: UserCreateScreen(),
+    path: "/users/create",
+  );
+  static final _ArgumentDestination userSingleScreen = _ArgumentDestination(
+    handler: Handler(handlerFunc: (context, parameters) {
+      return UserSingleScreen();
+    }),
+    path: "/users/:id",
+  );
+  static const _Destination usersListScreen = _Destination(
+    screen: UserListScreen(),
+    path: "/users",
+  );
 
   /// all argument free destinations
   /// registerable list
   static final List<_Destination> _cleanDestinations = [
     splashScreen,
     homeScreen,
+    postCreateScreen,
+    postListScreen,
+    userCreateScreen,
+    usersListScreen,
   ];
 
   /// all argument based destinations
   /// registerable list
-  static final List<_ArgumentDestination> _argumentDestinations = [];
+  static final List<_ArgumentDestination> _argumentDestinations = [
+    postSingleScreen,
+    userSingleScreen,
+  ];
 
   /// register all routes to the application
   static void register() {
