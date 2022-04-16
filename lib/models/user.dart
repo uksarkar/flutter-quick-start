@@ -1,3 +1,5 @@
+import 'package:flutter_quick_start/api/user_requests.dart';
+
 import 'address.dart';
 import 'company.dart';
 
@@ -39,7 +41,10 @@ class User {
 
   /// get user by id from api
   static Future<User?> find(int id) async {
-    /// here we have to make api call
-    return null;
+    /// get data from server
+    final _req = await UserRequests().findUserById(id);
+
+    /// return the data only
+    return _req.data;
   }
 }

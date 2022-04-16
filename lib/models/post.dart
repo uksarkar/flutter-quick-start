@@ -1,3 +1,5 @@
+import 'package:flutter_quick_start/api/post_requests.dart';
+
 import 'user.dart';
 
 class Post {
@@ -26,5 +28,14 @@ class Post {
 
     /// now return the user
     return _user;
+  }
+
+  /// get single post by id from api
+  static Future<Post?> find(int id) async {
+    /// get data from server
+    final _req = await PostRequests().findPostById(id);
+
+    /// return the data only
+    return _req.data;
   }
 }

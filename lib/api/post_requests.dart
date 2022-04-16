@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../models/user.dart';
+import '../models/post.dart';
 import '../api/base_request.dart';
 import '../models/responses/api_response.dart';
 
-class UserRequests extends BaseRequest {
+class PostRequests extends BaseRequest {
   /// base request constructor
-  UserRequests({
+  PostRequests({
     bool showMessage = true,
     BuildContext? context,
   }) : super(
@@ -14,17 +14,17 @@ class UserRequests extends BaseRequest {
           context: context,
         );
 
-  /// get all users
-  Future<ApiResponse<List<User>>> getAllUsers() {
+  /// get all posts
+  Future<ApiResponse<List<Post>>> getAllPosts() {
     return handle(
-      url: "/users",
+      url: "/posts",
       modelList: (List<dynamic> payload) =>
-          User.fromList(List<Map<String, dynamic>>.from(payload)),
+          Post.fromList(List<Map<String, dynamic>>.from(payload)),
     );
   }
 
-  /// find user by id
-  Future<ApiResponse<User?>> findUserById(int id) {
-    return handle(url: "/users/$id", model: User.fromMap);
+  /// find Post by id
+  Future<ApiResponse<Post?>> findPostById(int id) {
+    return handle(url: "/posts/$id", model: Post.fromMap);
   }
 }
