@@ -21,4 +21,7 @@ abstract class _BaseStore with Store {
 
   // set the database
   set db(DB db) => _db = db;
+
+  @observable
+  int _currentHomeWidget = 0;
 }

@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quick_start/screens/home_screen.dart';
 
 import '../screens/splash_screen.dart';
 import '../utils/str.dart';
@@ -10,11 +11,16 @@ abstract class Routes {
     screen: SplashScreen(),
     path: "/",
   );
+  static const _Destination homeScreen = _Destination(
+    screen: HomeScreen(),
+    path: "/home",
+  );
 
   /// all argument free destinations
   /// registerable list
   static final List<_Destination> _cleanDestinations = [
     splashScreen,
+    homeScreen,
   ];
 
   /// all argument based destinations
