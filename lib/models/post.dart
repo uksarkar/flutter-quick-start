@@ -38,4 +38,13 @@ class Post {
     /// return the data only
     return _req.data;
   }
+
+  /// get all posts
+  static Future<List<Post>?> all() async {
+    /// get data from the server
+    final _req = await PostRequests().getAllPosts();
+
+    /// return body only
+    return _req.data;
+  }
 }

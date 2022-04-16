@@ -47,4 +47,13 @@ class User {
     /// return the data only
     return _req.data;
   }
+
+  /// get all posts
+  static Future<List<User>?> all() async {
+    /// get data from the server
+    final _req = await UserRequests().getAllUsers();
+
+    /// return body only
+    return _req.data;
+  }
 }
