@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_final_fields
 import 'package:flutter/material.dart';
+import 'package:flutter_quick_start/models/post.dart';
+import 'package:flutter_quick_start/models/user.dart';
 import 'package:mobx/mobx.dart';
 
 import '../routes/routes.dart';
@@ -24,4 +26,53 @@ abstract class _BaseStore with Store {
 
   @observable
   int _currentHomeWidget = 0;
+
+  @observable
+  bool loadingAllUsers = false;
+
+  @observable
+  ObservableList<User> _users = ObservableList<User>();
+
+  @computed
+  List<User> get users => _users;
+
+  @observable
+  bool loadingAllPosts = false;
+
+  @observable
+  ObservableList<Post> _posts = ObservableList<Post>();
+
+  @computed
+  List<Post> get posts => _posts;
+
+  @action
+  Future<void> loadAllPosts() async {
+    /// set loading true
+    loadingAllPosts = true;
+
+    /// make the request
+    final posts = await Post.all();
+
+    /// set loading to false
+    loadingAllPosts = false;
+
+    /// check if not blank and
+    /// set posts to the store
+    if (posts != null) _posts.addAll(posts);
+  }
+
+  Future<void> loadAllUsers() async {
+    /// set loading true
+    loadingAllUsers = true;
+
+    /// make the request
+    final users = await User.all();
+
+    /// set loading to false
+    loadingAllUsers = false;
+
+    /// check if not blank and
+    /// set Users to the store
+    if (users != null) _users.addAll(users);
+  }
 }
